@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Database {
     private static int databaseSize = 3;
     public static Contact[] database = new Contact[databaseSize];
+    //Load database
+    //txt file might be a better way
     public static void initDatabase(){
         for(int i = 0;i < databaseSize;i++){
             if(database[i] != null){
@@ -13,7 +15,7 @@ public class Database {
         }
 
     }
-
+    //add contact input
     public static void addContact(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Type Their Name");
@@ -26,9 +28,10 @@ public class Database {
         boolean isSubscribed = scan.nextBoolean();
         System.out.println("Type Their Phone Number");
         String number = scan.nextLine();
+        String numberFormat = Format.numberChange(number);
         databaseSize++;
         initDatabase();
-        Contact newAdd = new Contact(name, gender,age,number,isSubscribed);
+        Contact newAdd = new Contact(name, gender,age,numberFormat,isSubscribed);
     }
 
 }

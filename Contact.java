@@ -1,5 +1,5 @@
 package profile;
-
+//constructer fo contact card
 public class Contact {
     public String name;
     public char gender;
