@@ -1,17 +1,34 @@
 package profile;
 
-public class Database {
-    public int databaseSize = 3;
-    public Contact[] database = new Contact[databaseSize];
-    public void initDatabase(){
-        for(int i = 0;i < databaseSize;i++){
+import java.util.Scanner;
 
+public class Database {
+    private static int databaseSize = 3;
+    public static Contact[] database = new Contact[databaseSize];
+    public static void initDatabase(){
+        for(int i = 0;i < databaseSize;i++){
+            if(database[i] != null){
+               System.out.println(database[i]);
+            }
         }
 
     }
-    public void currentContacts(){
-        Contact mike = new Contact("Mike", 'M',24,"(302) 778- 9334",true);
-        Contact alice = new Contact("Alice", 'F',19,"5811157782",true);
-        Contact erin = new Contact("Erin", 'O',26,"403-672-3361",true);
+
+    public static void addContact(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Type Their Name");
+        String name = scan.nextLine();
+        System.out.println("Type Their Gender (Type O for anything other then Male(m) or Female(f))");
+        char gender = scan.next().charAt(0);
+        System.out.println("Type Their Age");
+        int age = scan.nextInt();
+        System.out.println("Subscribe them for Newsletter?");
+        boolean isSubscribed = scan.nextBoolean();
+        System.out.println("Type Their Phone Number");
+        String number = scan.nextLine();
+        databaseSize++;
+        initDatabase();
+        Contact newAdd = new Contact(name, gender,age,number,isSubscribed);
     }
+
 }
